@@ -1,0 +1,4 @@
+C:/Program Files (x86)/github/FiniteAutomaton/cmake-build-debug/CMakeFiles/TEST.dir
+C:/Program Files (x86)/github/FiniteAutomaton/cmake-build-debug/CMakeFiles/test.dir
+C:/Program Files (x86)/github/FiniteAutomaton/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Program Files (x86)/github/FiniteAutomaton/cmake-build-debug/CMakeFiles/rebuild_cache.dir
