@@ -38,14 +38,15 @@ TEST(EPS_PATHS_TEST, TEST1) {
     ASSERT_TRUE(dfa.is_in("c"));
     ASSERT_FALSE(dfa.is_in("ab"));
     ASSERT_FALSE(dfa.is_in("acaba"));
-    dfa.minimize();
-    ASSERT_EQ(dfa.size(), 2);
-    ASSERT_FALSE(dfa.is_in(""));
-    ASSERT_TRUE(dfa.is_in("a"));
-    ASSERT_TRUE(dfa.is_in("b"));
-    ASSERT_TRUE(dfa.is_in("c"));
-    ASSERT_FALSE(dfa.is_in("ab"));
-    ASSERT_FALSE(dfa.is_in("acaba"));
+    CDFA cdfa(dfa);
+    cdfa.minimize();
+    ASSERT_EQ(cdfa.size(), 3);
+    ASSERT_FALSE(cdfa.is_in(""));
+    ASSERT_TRUE(cdfa.is_in("a"));
+    ASSERT_TRUE(cdfa.is_in("b"));
+    ASSERT_TRUE(cdfa.is_in("c"));
+    ASSERT_FALSE(cdfa.is_in("ab"));
+    ASSERT_FALSE(cdfa.is_in("acaba"));
 }
 
 TEST(EPS_PATHS_TEST, TEST2) {
@@ -61,17 +62,18 @@ TEST(LONG_WORDS_TEST, TEST1) {
     NFA nfa(2, {'a', 'b', 'c'}, {{0, 1}, {1, 0}}, {"ab", "bc"}, {true, false});
     DFA dfa(nfa);
     ASSERT_EQ(dfa.size(), 4);
-    dfa.minimize();
-    ASSERT_EQ(dfa.size(), 4);
-    ASSERT_TRUE(dfa.is_in(""));
-    ASSERT_TRUE(dfa.is_in("abbc"));
-    ASSERT_TRUE(dfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbc"));
-    ASSERT_FALSE(dfa.is_in("a"));
-    ASSERT_FALSE(dfa.is_in("ab"));
-    ASSERT_FALSE(dfa.is_in("abb"));
-    ASSERT_FALSE(dfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbcb"));
-    ASSERT_FALSE(dfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbca"));
-    ASSERT_FALSE(dfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbcc"));
+    CDFA cdfa(dfa);
+    cdfa.minimize();
+    ASSERT_EQ(cdfa.size(), 5);
+    ASSERT_TRUE(cdfa.is_in(""));
+    ASSERT_TRUE(cdfa.is_in("abbc"));
+    ASSERT_TRUE(cdfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbc"));
+    ASSERT_FALSE(cdfa.is_in("a"));
+    ASSERT_FALSE(cdfa.is_in("ab"));
+    ASSERT_FALSE(cdfa.is_in("abb"));
+    ASSERT_FALSE(cdfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbcb"));
+    ASSERT_FALSE(cdfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbca"));
+    ASSERT_FALSE(cdfa.is_in("abbcabbcabbcabbcabbcabbcabbcabbcabbcabbcc"));
 }
 
 TEST(CONVERTING_TO_COMPLETE_TEST, TEST1) {
