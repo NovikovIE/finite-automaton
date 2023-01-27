@@ -38,11 +38,9 @@ private:
                       queue<int>& q, vector<vector<int>>& vertices_paths_to, vector<vector<string>>& m) const;
     void calculate_regular_paths(int end_state, vector<vector<bool>>& is_path_exists,
                                  vector<vector<int>>& vertices_paths_to, vector<vector<string>>& m) const;
-    vector<int> split_to_equivalence_classes();
 
 public:
     explicit DFA(const NFA& nfa);
-    void minimize();
     void show_automaton();
     bool is_in(const string& s);
     size_t longest_substring(const string& s);
