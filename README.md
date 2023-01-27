@@ -1,1 +1,1 @@
-# FormalPractice1
+# FiniteAutomaton
