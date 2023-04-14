@@ -1,4 +1,4 @@
-# FiniteAutomaton
+# Finite Automaton
 
 Contains header file finite_automaton.h, which includes 3 classes:
 
